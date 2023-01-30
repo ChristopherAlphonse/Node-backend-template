@@ -14,7 +14,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - 8000:8000
+      - 8000:8081
       - 9229:9229 # debugger port
     volumes:
       - .:/usr/src/app
@@ -22,4 +22,4 @@ services:
     command: yarn start:docker
     environment:
       DATABASE_URL: postgres://postgres@postgres/webapp_dev
-      PORT: 8000
+      PORT: 8081

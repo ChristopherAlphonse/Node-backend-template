@@ -1,4 +1,4 @@
-FROM node:17.3
+FROM node:lts
 
 WORKDIR /usr/src/app
 
@@ -13,4 +13,4 @@ COPY . .
 RUN yarn build
 
 EXPOSE 8080
-CMD [ "yarn", "start" ]
+CMD [ "yarn", "dev" ]

@@ -8,6 +8,7 @@
     "sourceMap": true,
     "target": "esNext",
     "module": "NodeNext",
+
     "strict": true,
     "skipLibCheck": true
   },
