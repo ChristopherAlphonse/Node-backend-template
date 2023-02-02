@@ -2,6 +2,9 @@ FROM node:lts
 
 WORKDIR /usr/src/app
 
+COPY .env ./
+COPY tsconfig.json ./
+
 COPY package.json yarn.lock ./
 RUN yarn install
 
