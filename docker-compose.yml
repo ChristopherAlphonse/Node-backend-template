@@ -1,6 +1,14 @@
-version: '2'
+version: '3.8'
 
 services:
+  db:
+    image: postgres:15.1-alpine
+    restart: always
+    ports:
+      - '5432:5432' #inspect
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: nodebackend_dev
   backend:
     build: .
     ports:
@@ -9,6 +17,11 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+
     command: yarn dev:docker
+    depends_on:
+      - db
     environment:
+      DATABASE_URL: postgres://postgres@db:5432/nodebackend_dev
       PORT: 8000
+# "postgres://YourUserName:YourPassword@YourHostname:5432/YourDatabaseName";

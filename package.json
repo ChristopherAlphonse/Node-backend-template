@@ -4,11 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "volta": {
-    "node": "19.0.0"
+    "node": "19.5.0"
   },
   "scripts": {
     "build": "rimraf dist && swc ./src -d dist",
-    "db:console": "docker compose exec postgres psql -h localhost -U postgres -d webapp_dev",
+    "db:console": "docker compose exec db psql -h localhost -U postgres -d nodebackend_dev",
     "db:migrate": "knex migrate:latest",
     "docker:db:migrate": "docker compose run backend yarn db:migrate",
     "rebuild:be": "docker compose build backend && docker compose rm --stop backend && docker compose up -d backend",
