@@ -5,3 +5,5 @@ export default {
     extension: 'ts',
   },
 };
+
+//postgress db as client for migration
