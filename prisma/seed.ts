@@ -1,45 +1,28 @@
-import { Prisma, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
+import { nanoid } from 'nanoid';
 
-const prisma = new PrismaClient();
+const prismaDB = new PrismaClient({
+  log: ['error', 'info', 'query', 'warn'],
+});
 
-const userData: Prisma.UserCreateInput[] = [
-  {
-    name: 'Chris',
-    post: {
-      create: { title: 'Hello World' },
-      profile: {
-        create: { bio: 'I love Prisma' },
-      },
-    },
-  },
-  {
-    name: 'Summer',
-    post: {
-      create: { title: 'Hello Prisma' },
-      profile: {
-        create: { bio: 'I love TypeScript' },
-      },
-    },
-  },
-];
+const idGen = Number(nanoid());
 
-const main = async () => {
-  console.log(`Start seeding ...`);
-  for (const u of userData) {
-    const user = await prisma.user.create({
-      data: u,
+const seedData = async () => {
+  if ((await prismaDB.post.count()) === 0) {
+    prismaDB.post.createMany({
+      data: [
+        {
+          id: idGen,
+          authorId: idGen,
+          slug: 'Node Stack',
+          title: 'Full Stack backend with NodeJS',
+          publishedAt: new Date(),
+        },
+        {
+          id: idGen,
+          authorId: idGen,
+        },
+      ],
     });
-    console.log(`Created user with id: ${user.id}`);
   }
-  console.log(`Seeding finished.`);
 };
-
-main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });

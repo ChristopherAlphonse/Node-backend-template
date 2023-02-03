@@ -2,17 +2,30 @@ import * as dotenv from 'dotenv';
 
 import express, { Application, Request, Response } from 'express';
 
+import { PrismaClient } from '@prisma/client';
 import morgan from 'morgan';
+import { nanoid } from 'nanoid';
 
-const prisma = new PrismaClient();
+const app: Application = express();
 
 dotenv.config();
-const app: Application = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev')); //middleware logger
 
-app.use('/s');
+const prismaDB = new PrismaClient({
+  log: ['error', 'info', 'query', 'warn'],
+});
+
+const idGen = Number(nanoid());
+
+console.log(idGen);
+
+app.use('/posts', async (req: Request, res: Response) => {
+  const posts = await prismaDB.post.findMany();
+  res.status(200).send(posts);
+});
 
 app.get('/', async (req: Request, res: Response) => {
   const ip = req.ip;

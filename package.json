@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "rimraf dist && swc ./src -d dist",
-    "db-seed": "prisma db seed",
+    "db-seed": "npx prisma db seed",
     "db:console": "docker compose exec db psql -h localhost -U postgres -d nodebackend_dev",
     "db:migrate": "knex migrate:latest",
     "docker:db:migrate": "docker compose run backend yarn db:migrate",
@@ -21,7 +21,7 @@
     "lint:fix": "eslint . --ext .ts --fix"
   },
   "prisma": {
-    "seed": "tsx prisma/seed.ts"
+    "seed": "ts-node prisma/seed.ts"
   },
   "prettier": {
     "tabWidth": 2,
