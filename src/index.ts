@@ -6,6 +6,8 @@ import { PrismaClient } from '@prisma/client';
 import morgan from 'morgan';
 import { nanoid } from 'nanoid';
 
+// depend issue here
+
 const app: Application = express();
 
 dotenv.config();
