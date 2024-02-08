@@ -5,7 +5,7 @@
   "license": "MIT",
   "volta": {
     "node": "19.5.0",
-    "yarn": "3.4.1"
+    "pnpm ": "3.4.1"
   },
   "scripts": {
     "build": "rimraf dist && swc ./src -d dist",
@@ -13,14 +13,14 @@
     "docker:db:migrate:undo": "docker compose run backend npx knex migrate:down",
     "db:console": "docker compose exec db psql -h localhost -U postgres -d nodebackend_dev",
     "db:migrate": "knex migrate:latest",
-    "docker:db:migrate": "docker compose run backend yarn db:migrate",
+    "docker:db:migrate": "docker compose run backend pnpm  db:migrate",
     "rebuild:backend": "docker compose build backend && docker compose rm --stop backend && docker compose up -d backend",
-    "dev": "yarn build && nodemon dist/index.js",
-    "dev:docker": "yarn build && node --inspect=0.0.0.0 dist/index.js",
-    "checked": "ncu -u && yarn install && yarn autoclean --force",
+    "dev": "pnpm  build && nodemon dist/index.js",
+    "dev:docker": "pnpm  build && node --inspect=0.0.0.0 dist/index.js",
+    "checked": "ncu -u && pnpm  install && pnpm  autoclean --force",
     "prepare": "husky install",
     "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "lint:fix": "eslint . --ext .ts --fix"package update
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
