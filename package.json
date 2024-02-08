@@ -17,10 +17,10 @@
     "rebuild:backend": "docker compose build backend && docker compose rm --stop backend && docker compose up -d backend",
     "dev": "pnpm  build && nodemon dist/index.js",
     "dev:docker": "pnpm  build && node --inspect=0.0.0.0 dist/index.js",
-    "checked": "ncu -u && pnpm  install && pnpm  autoclean --force",
+    "checked": "ncu -u && pnpm  install",
     "prepare": "husky install",
     "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"package update
+    "lint:fix": "eslint . --ext .ts --fix"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
