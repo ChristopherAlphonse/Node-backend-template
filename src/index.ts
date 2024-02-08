@@ -45,7 +45,7 @@ app.get('/', async (req: Request, res: Response) => {
    </head>
 <body>
 <style>  *{margin:0; padding:0; box-sizing:border-box; } </style>
-<h1 style="text-align:center;>WELCOME TO THE GULAG</h1>
+<h1 style="text-align:center;>WELCOME</h1>
 <p style="text-align:center;">Server Started at ${ip}:${PORT}</p>
    </body>
 </html>`);
