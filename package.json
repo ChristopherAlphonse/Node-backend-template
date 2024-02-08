@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "volta": {
-    "node": "19.5.0",
-    "pnpm ": "3.4.1"
+    "node": "20.11.0",
+    "pnpm ": "8.15.1"
   },
   "scripts": {
     "build": "rimraf dist && swc ./src -d dist",
