@@ -7,8 +7,3 @@
     "eamodio.gitlens"
   ]
 }
-
-
-
- git config --global user.email "christopheralphonse96@gmail.com"
-  git config --global user.name "Christopher Alphonse"
