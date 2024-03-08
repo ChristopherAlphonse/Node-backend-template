@@ -18,7 +18,7 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
 
-    command: yarn dev:docker
+    command: pnpm dev:docker
     depends_on:
       - db
     environment:
